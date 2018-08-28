@@ -1,0 +1,66 @@
+<html>
+<head>  
+<title></title>
+<style>
+  #border
+    {
+        position: relative;
+        border:4px solid red;
+        margin-top: 50px;
+        margin-left: 20px;
+        background-color: pink;
+        width:400px;
+        height:400px;
+    }
+    img
+    {
+        position: absolute;
+        height: 60px;
+        width: 60px;
+    }
+</style>    
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script>
+      $(document).ready(function()
+      {
+//          var rand=Math.random();
+//          var a=85*rand;
+//          var b=85*rand;
+//          var left=a+"%";
+//          var top=b+"%";
+          $("#image").css({"margin-left":"42px;","margin-top":"0px;"})
+          var c=85;
+          var d=42;
+          for(i=0;i<100;i++)
+          {
+          var animateleft=c+"%";
+           var animatetop=d+"%";
+          $("#image").animate({"margin-left":animateleft,"margin-top":animatetop},1000);
+          if(c==85 && d==42)
+          {
+            c=42;
+            d=85;
+          }
+          else if(c==42 && d==85)
+          {
+           c=0;
+           d=42;
+          }
+           else if(c==0 && d==42)
+          {
+           c=42;
+           d=0;
+          }
+          else if(c==42 && d==0)
+          {
+           c=85;
+           d=42;
+          }
+          }
+      });
+</script>
+</head>
+<body>
+    <div id="border"><img id="image" src="ball_red.gif"></div>
+</body>
+</html>
