@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>2</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<style type="text/css">
+	body {
+			background-image: url('f.jpg');
+			background-repeat: no-repeat;
+			background-size: cover;
+			background-attachment: fixed;	
+
+				}
+		#stone {
+			width: 100px;
+			height: 100px;
+			display: none;
+			position: absolute;
+		}
+		#dragon {
+			margin-left: 80%;
+			margin-top: 33%;
+			position: relative;
+		}
+	</style>
+</head>
+<body>
+	<div>
+		<img src="stone.png" id="stone">
+	</div>
+	<div>
+		<img src="dragon1.gif" width="200" height="200" id="dragon">
+	</div>
+	<script type="text/javascript">
+		$(document).ready(function(){
+				var div,rect,x,y,a;
+				$('#dragon').animate({
+					marginLeft: "-=1000px"
+				},7000);
+				$(document).click(function(event){
+					div = document.getElementById("dragon");
+	  				rect = div.getBoundingClientRect();
+	  				a = rect.left;
+	  				console.log(a);
+					x = event.pageX+"px";
+					b = event.pageX;
+	  				y = event.pageY+"px";
+	  				console.log(x);
+	  				setTimeout(function(){
+	  					$('#stone').css("display","block");
+						$('#stone').css("margin-left", x);
+						$('#stone').css("margin-top", y);
+						$('#stone').animate({
+							marginTop: "550px",
+						}, 2000);
+						if(a>b){
+							$('#dragon').stop();
+							$('#dragon').animate({
+								marginLeft: x
+							}, 2000);
+							$('#dragon').fadeOut();
+						}
+						setTimeout(function(){
+	                      	document.getElementById('stone').style.display="none";
+	                  	}, 2000);
+	  				},100);
+				});
+			});
+	</script>
+</body>
+</html>
